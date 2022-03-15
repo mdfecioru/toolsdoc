@@ -35,6 +35,9 @@
     - It will take all the work from the staging area, create a “commit” (which will have a unique ID) and save it in git
     - Use the **commit** command
 ```
+# Initialize a new git repository
+> git init
+
 # Add files to staging area
 > git add ...
 
@@ -132,6 +135,13 @@
     - Merge the local changes with the remote data that was just synced (git merge)
     - Push the final merge to remote (git push)
 - PUSH - this is a command that does the fetch from a remote and the merge with the local version of the branch in a single step
+```
+# Add remote repo
+> git remote add origin git@github.com:mdfecioru/toolsdoc.git
+
+# Pushing code on the repote repo
+> git push -u origin master
+```
 
 ## ToDo
 - git pull --rebase
