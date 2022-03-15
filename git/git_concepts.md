@@ -140,6 +140,8 @@
 > git remote add origin git@github.com:mdfecioru/toolsdoc.git
 
 # Pushing code on the repote repo
+# A link is created between the local "master" and the remote "master"
+# -> once this link is made, just use "git push"
 > git push -u origin master
 ```
 
