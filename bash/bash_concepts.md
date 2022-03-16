@@ -1,0 +1,42 @@
+
+- [Types of Shell](#types-of-shell)
+
+## Types of Shell
+- Interactive vs Non-Interactove
+    - Interactive: attached to the terminal (TTY) and allows you to send commands and see the results
+    - Non-Interactive: not attached to the TTY and cannot receive commands
+        - Used to run scripts
+- Login vs Non-Login
+    - Login: a login shell is started when a shell is required as part of the login process (e.g. ssh into a server)
+        - Will execute any commands or set any confguration required as part of starting the session
+    - Non-Login: a non-login shell will set any configuration specific to setting up the sell itself (rather than the session)
+        - Example: the shell you get from graphical session when you start the Terminal (you are already logged in the machine by the graph interface)
+- Bash config files order
+    - For interactive login shell
+        - If system admin has configured this file: /etc/profile
+        - Then will read from the first of the following files (if exist)
+            - ~/.bash_profile
+            - ~/.bash_login
+            - ~/.profile
+        - When the shell ends:
+            - ~/.bash_logout
+    - For interactive non-login shell
+        - Will first read /etc/bash.bashrc
+        - Then will read ~/.bashrc
+- Z-Shell config files order
+    - For interactive login the following files are executed in order:
+        - /etc/zshenv      -> to set global env variables
+        - ~/.zshenv        -> to set local env variables
+        - /etc/zprofile    -> if exists
+        - ~/.zprofile
+        - /etc/zshrc       -> if exists
+        - ~/.zshrc         -> to set up local aliases, options and custom prompt
+        - /etc/zlogin      -> if exists
+        - ~/.zlogin        -> to finish local setting up the interactive logging shell
+        - When the shell ends:
+          - ~/.zlogout
+    - For interactive non-login the following files are executed in order:
+        - /etc/zshenv      -> to set global env variables
+        - ~/.zshenv        -> to set local env variables
+        - /etc/zshrc       -> if exists
+        - ~/.zshrc         -> to set up local aliases, options and custom prompt
