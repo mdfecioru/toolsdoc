@@ -34,7 +34,7 @@
         - /etc/zlogin      -> if exists
         - ~/.zlogin        -> to finish local setting up the interactive logging shell
         - When the shell ends:
-          - ~/.zlogout
+            - ~/.zlogout
     - For interactive non-login the following files are executed in order:
         - /etc/zshenv      -> to set global env variables
         - ~/.zshenv        -> to set local env variables
