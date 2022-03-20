@@ -8,7 +8,7 @@
 - [ToDo](#todo)
 
 ## Git internals
-- Internal git objects - ket in *.git/objects* folder
+- Internal git objects - kept in *.git/objects* folder
     - Blobs: file content
     - Trees: folders
     - Commits: the commits
@@ -37,6 +37,25 @@
 ```
 # Initialize a new git repository
 > git init
+
+# configuring git
+#   --local: applies the configurations for the current repo only
+#   --global: applies the configurations for the user directory
+#   --system: applies the configurations for the git instalation
+> git config --local user.name "First Last"
+> git config --local user.email "email@address"
+
+# remove configs
+# remove a specific setting from a specific config level
+> git config --global --unset user.name
+# Edit a config level
+> git config --global --edit
+# Remove a confic section
+git config --global --remove-section user
+
+# View configuration values
+> git config --list --show-origin       # shows all configs from all sources
+> git config user.name                  # shows the value of user.name
 
 # Add files to staging area
 > git add ...
@@ -136,6 +155,9 @@
     - Push the final merge to remote (git push)
 - PUSH - this is a command that does the fetch from a remote and the merge with the local version of the branch in a single step
 ```
+# See the remotes
+> git remote -v
+
 # Add remote repo
 > git remote add origin git@github.com:mdfecioru/toolsdoc.git
 
