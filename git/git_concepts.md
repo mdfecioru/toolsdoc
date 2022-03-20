@@ -158,6 +158,9 @@ git config --global --remove-section user
 # See the remotes
 > git remote -v
 
+# To add a remote
+> git remote add <remote_name> <remote_url>
+
 # Add remote repo
 > git remote add origin git@github.com:mdfecioru/toolsdoc.git
 
