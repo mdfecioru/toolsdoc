@@ -1,7 +1,34 @@
 
+- [Popular commands](#popular-commands)
 - [Types of Shell](#types-of-shell)
 - [Basic workflows / concepts](#basic-workflows--concepts)
+- [Debugging](#debugging)
 - [My Links](#my-links)
+
+
+## Popular commands
+
+```
+# List current runnning jobs
+> psx aux
+
+# A tree of jobs (with PID)
+> pstree -p
+
+# The PID of the current process
+> echo $$
+
+# Identifies all the types of "pwd" commands available - that could be run 
+# (shell built in, external, aliases, functions etc)
+> type -a pwd
+
+# Same like "type" but this isonly looking in PATH!
+> which -a pwd
+
+# Symbolic link - here "target" will point to "source"
+> ln -s target source
+```
+
 
 ## Types of Shell
 - Interactive vs Non-Interactove
@@ -145,16 +172,6 @@
             - Specify *-s* flag to specify the signal name
         - If no signal is specified, TERM will be sent
 - Job performace: top, htop
-- See running jobs
-    ```
-    > psx aux
-
-    # A tree of jobs (with PID)
-    > pstree -p
-
-    # The PID of the current process
-    > echo $$
-    ```
 - exec
     - Whenever we run any command in a Bash shell, a subshell is created by default, and a new child process is spawned (forked) to execute the command. When using exec, however, the command following exec replaces the current shell. 
         - This means no subshell is created and the current process is replaced with this new command.
@@ -203,7 +220,13 @@
     Line2
     END
     ```
-  
+
+## Debugging
+- Options to turn on debugginng
+    - Use the "-x" option: *bash -x myscript.sh*
+    - Turn debugginng mode for the shell: *set -x*
+        - Use *set +x* to reverse the setting
+
 
 ## My Links
 - https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/
