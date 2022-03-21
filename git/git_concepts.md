@@ -68,6 +68,7 @@ git config --global --remove-section user
 
 # See the list of commits
 > git log
+> git log --oneline
 
 # get the status of your files
 > git status
@@ -107,7 +108,7 @@ git config --global --remove-section user
 ```
 # See the current branches
 > git branch
-> git branch --all    # lists also the remote branches
+> git branch -a    # lists also the remote branches
 
 # Create a new branch
 > git branch branch_name
@@ -168,6 +169,17 @@ git config --global --remove-section user
 # A link is created between the local "master" and the remote "master"
 # -> once this link is made, just use "git push"
 > git push -u origin master
+
+# Pushing a local branch on a remote
+# List branches on remote
+> git ls-remote
+# Push the local_branch on the remote
+> git push -u origin local_branch
+# To fetch abranch from a remote to local repo
+> git fetch origin remote_branch
+# The command above will bring the remote branch locally but we do not have yet a 
+# local branch that tracks the remote branch
+> git checkout --track origin/remote_branch
 ```
 
 ## ToDo

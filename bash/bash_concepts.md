@@ -1,33 +1,8 @@
 
-- [Popular commands](#popular-commands)
 - [Types of Shell](#types-of-shell)
 - [Basic workflows / concepts](#basic-workflows--concepts)
 - [Debugging](#debugging)
 - [My Links](#my-links)
-
-
-## Popular commands
-
-```
-# List current runnning jobs
-> psx aux
-
-# A tree of jobs (with PID)
-> pstree -p
-
-# The PID of the current process
-> echo $$
-
-# Identifies all the types of "pwd" commands available - that could be run 
-# (shell built in, external, aliases, functions etc)
-> type -a pwd
-
-# Same like "type" but this isonly looking in PATH!
-> which -a pwd
-
-# Symbolic link - here "target" will point to "source"
-> ln -s target source
-```
 
 
 ## Types of Shell

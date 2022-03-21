@@ -16,3 +16,9 @@
         - Put a ":" at the begining of the options list (e.g. *:ab*) to signal that you accepts options other than "a" or "b" - this is useful to support a custom help.
     - *--* -> this signals the end of options list. From this moment on everything will be considered as arguments for the script.
 
+## Running scripts
+- Run a script and logout
+    - This is supported by modern shell - just start your script in background mode
+    - After you logout, the parent of the script is systemd (PID 1)
+    - NOTE: The TTY will no longer be available if you logout!!!
+        - If you are interested in logs, use "nohup" - output data will be available in nohup.out file
