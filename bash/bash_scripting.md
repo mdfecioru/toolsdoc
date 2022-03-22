@@ -22,3 +22,29 @@
     - After you logout, the parent of the script is systemd (PID 1)
     - NOTE: The TTY will no longer be available if you logout!!!
         - If you are interested in logs, use "nohup" - output data will be available in nohup.out file
+- "at" command to run a job at a certain moment in time (e.g.*at noon* )
+    - *atq* - to see the jobs in the queue
+    - *at -c JobID* - to see the details / configurations of a job
+    - *atrm jobID* - to remove a job from the queue
+- crontab: runs the scheduled jobs at a very specific interval, but only if the system is running at that moment.
+    - "-e" - to edit the crontab schedule
+    - "-l" - to list the crontab schedule
+- anacron: runs the scheduled job even if the computer is off at that moment
+    - [Cron vs Anacron](https://www.putorius.net/cron-vs-anacron.html)
+- Systemd - starting the script as a service usinng systemd
+    - Service Unit sections
+        - Unit
+            - Description - description of the service
+            - After - specifies after which service the current service should start
+        - Service
+            - Type - type of the service (e.g. "simple")
+            - ExecStart - the command to start the service
+            - ExecStop - the command to stop the service
+            - KillMode - specifies how processes of this unit shall be killed. One of control-group, mixed, process, none.
+        - Install - needed if we want to enable the service to start on system boot
+            - WantedBy - specifies the system boot target (run level ) where the service should be started on
+    - Systemd maintains the PID of the service in $MAINPID
+    - System configuration files are stored in */etc/systemd/system*
+    - Re-reading the services available (used when you add a new service config file): *systemctl daemon-reload*
+    - Enable and start a service: *systemctl enable --now myservice.service*
+    - Check status: *systemctl status myservice.service*
