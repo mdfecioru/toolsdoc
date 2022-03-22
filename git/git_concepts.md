@@ -2,10 +2,10 @@
 - [Git internals](#git-internals)
 - [There are 3 areas used by Git](#there-are-3-areas-used-by-git)
 - [MANGING CONFLICTS when merging](#manging-conflicts-when-merging)
-- [Removing / Renaming files](#removing--renaming-files)
 - [Tags](#tags)
 - [Remotes](#remotes)
 - [ToDo](#todo)
+
 
 ## Git internals
 - Internal git objects - kept in *.git/objects* folder
@@ -34,54 +34,7 @@
 - **REPOSITORY** area: this is where you actually commit the changes into git
     - It will take all the work from the staging area, create a “commit” (which will have a unique ID) and save it in git
     - Use the **commit** command
-```
-# Initialize a new git repository
-> git init
 
-# configuring git
-#   --local: applies the configurations for the current repo only
-#   --global: applies the configurations for the user directory
-#   --system: applies the configurations for the git instalation
-> git config --local user.name "First Last"
-> git config --local user.email "email@address"
-
-# remove configs
-# remove a specific setting from a specific config level
-> git config --global --unset user.name
-# Edit a config level
-> git config --global --edit
-# Remove a confic section
-git config --global --remove-section user
-
-# View configuration values
-> git config --list --show-origin       # shows all configs from all sources
-> git config user.name                  # shows the value of user.name
-
-# Add files to staging area
-> git add ...
-
-# Commit the data from staging area
-> git commit -m "Comment"
-
-# Add & Commit in a single line
-> git commit -a -m "Comment"
-
-# See the list of commits
-> git log
-> git log --oneline
-
-# get the status of your files
-> git status
-> git status -s        # --> the short variant
-
-# Diff between WORKING and STAGING areas
-> git diff
-
-# Diff between STAGING and REPOSITORY areas
-# What are the changes that I have done that will go into the next commit?
-> git diff --cached
-> git diff --staged
-```
 
 ## MANGING CONFLICTS when merging
 - The conflict files will have comments with the conflicts -> these need to be addressed manually
@@ -105,38 +58,6 @@ git config --global --remove-section user
     - If you do a merge of *main* with *branch1* then this will be a simple fast-forward!
 ![Rebase](img/rebase.png)
 
-```
-# See the current branches
-> git branch
-> git branch -a    # lists also the remote branches
-
-# Create a new branch
-> git branch branch_name
-
-# Switches to a branck (HEAD changes to point to the new branch) AND 
-# copies data from REPOSITORY area to the WORKING and STAGING areas
-> git switch branch_name
-> git checkout branchname
-```
-
-## Removing / Renaming files
-- If the file was added in STAGE but not yet in REPOSITORY.
-    - If I want to remove the file from both WORKING and STAGE: *git rm -f filename*
-    - If I want to remove the file from STAGE but not from WORKING (unstage the file): *git rm --cache filename*
-- Renaming the readme.txt to readme.md
-```
-# Option 1: using add
-# -> In this step git sees that readme.txt is deleted and readme.md new
-> mv readme.txt readme.md
-# -> In this step git actually discovers that the file was renamed
-> git add readme.txt        # this means copy the deletion of readme.txt from WORKING to STAGE area
-> git add readme.md
-> git commit
-
-# Option 2: using git mv
-> git mv readme.txt readme.md
-> git commit
-```
 
 ## Tags
 - There are 2 types of tags
@@ -145,6 +66,7 @@ git config --global --remove-section user
     - Lightweight tags: *git tag tag2 -m “Message”*
         - This will create a tag *tag2* (saved in *.git/refs/tags*) which will point directly to the current commit object
 - Use *git checkout* to switch to tags (*git switch* does not wok for tags)
+
 
 ## Remotes
 - These are git repos our git repo can synchronize with
@@ -155,32 +77,7 @@ git config --global --remove-section user
     - Merge the local changes with the remote data that was just synced (git merge)
     - Push the final merge to remote (git push)
 - PUSH - this is a command that does the fetch from a remote and the merge with the local version of the branch in a single step
-```
-# See the remotes
-> git remote -v
 
-# To add a remote
-> git remote add <remote_name> <remote_url>
-
-# Add remote repo
-> git remote add origin git@github.com:mdfecioru/toolsdoc.git
-
-# Pushing code on the repote repo
-# A link is created between the local "master" and the remote "master"
-# -> once this link is made, just use "git push"
-> git push -u origin master
-
-# Pushing a local branch on a remote
-# List branches on remote
-> git ls-remote
-# Push the local_branch on the remote
-> git push -u origin local_branch
-# To fetch abranch from a remote to local repo
-> git fetch origin remote_branch
-# The command above will bring the remote branch locally but we do not have yet a 
-# local branch that tracks the remote branch
-> git checkout --track origin/remote_branch
-```
 
 ## ToDo
 - git pull --rebase
