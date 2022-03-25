@@ -4,6 +4,7 @@
 - [MANGING CONFLICTS when merging](#manging-conflicts-when-merging)
 - [Tags](#tags)
 - [Remotes](#remotes)
+- [References](#references)
 - [ToDo](#todo)
 
 
@@ -77,7 +78,16 @@
     - Merge the local changes with the remote data that was just synced (git merge)
     - Push the final merge to remote (git push)
 - PUSH - this is a command that does the fetch from a remote and the merge with the local version of the branch in a single step
+- FETCH - it downloads (fetches) the commit objects from a remote (but does not yet merges them on the local branch)
+- PULL - this is a FETCH followed by a MERGE (in local branch or with a branch from another repository)
+    - By default the "merging strategy" is *merge*: changes from remote are merged with the unbublished changes (from local branch) and a new commit object is created
+    - "--rebase" this changes the "merge strategy" to *rebase*: the unpublished changes are reaplied on the published changes and no new commit will be added to the history.
+![Fetcg / Pull](img/fetch_pull.png)
 
+
+## References
+- [How to Write a Git Commit Message](https://cbea.ms/git-commit/)
+- [Visualizing git](https://git-school.github.io/visualizing-git)
 
 ## ToDo
 - git pull --rebase
